@@ -1,0 +1,26 @@
+{
+    "name": "gustavtrenwith/exception_handler",
+    "description": "An exception handler for Laravel 5 websites.",
+    "keywords": ["laravel", "gustavtrenwith", "exception", "handler", "php"],
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+          "name": "Gustav Trenwith",
+          "email": "gtrenwith@gmail.com",
+          "homepage": "https://gustavtrenwith.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+	    "laravel/framework": ">=5.5"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "GustavTrenwith\\ExceptionHandler\\": "src/"
+        }
+    }
+}
