@@ -20,10 +20,10 @@ Then run `composer update`.
 ## Register Service Provider and Facade
 
 Register the service providers and Facades in `config/app.php`.
-```
+```php
 GustavTrenwith\ExceptionHandler\ExceptionHandlerServiceProvider::class,
 ```
-```
+```php
 'ExceptionHandler' => GustavTrenwith\ExceptionHandler\ExceptionHandlerFacade::class,
 ```
 

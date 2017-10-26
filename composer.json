@@ -3,7 +3,7 @@
     "description": "An exception handler for Laravel 5 websites.",
     "keywords": ["laravel", "gustavtrenwith", "exception", "handler", "php"],
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "authors": [
         {
           "name": "Gustav Trenwith",
