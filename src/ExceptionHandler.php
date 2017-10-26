@@ -40,14 +40,11 @@ class ExceptionHandler
         $exceptionMessage .= "Line: ".$exception->getLine()."\r\n";
         $exceptionMessage .= "Trace: ".$exception->getTraceAsString()."\r\n";
 
-        Mail::to($email)->send(new OrderShipped($order));
+        Mail::to($email)
+            ->from('exceptions@' . env('APP_URL'))
+            ->subject('Exception Caught on ' . env('APP_URL'))
+            ->send(new ExceptionEmail('The following exception was caught on ' . env('APP_URL') . ':<br/>' . nl2br($exceptionMessage)));
 
-        Email::send([
-            'to' => $email,
-            'from' => 'exceptions@' . env('APP_URL'),
-            'subject' => 'Exception Caught on ' . env('APP_URL'),
-            'message' => 'The following exception was caught on ' . env('APP_URL') . ':<br/>' . nl2br($exceptionMessage),
-        ]);
         return true;
     }
 }

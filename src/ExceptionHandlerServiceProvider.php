@@ -25,7 +25,10 @@ class ExceptionHandlerServiceProvider extends ServiceProvider {
     */
     public function boot()
     {
-
+        # Publish the config file
+        $this->publishes([
+            __DIR__.'/email.blade.php' => base_path('resources/views/emails/exception-handler/email.blade.php'),
+        ]);
     }
 
     /**

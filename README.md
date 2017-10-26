@@ -36,6 +36,12 @@ DISABLE_EXCEPTION_EMAILS=false
 WEBMASTER_EMAIL=<YOUR_EMAIL_ADDRESS>
 ```
 
+## View Setup
+You need to run the following command to setup the view file.
+```bash
+php artisan vendor:publish --force
+```
+
 ## Exception Handler Setup
 Now you are all set. Just paste the following line in the `report()` method in the `app\Exceptions\Handler.php` file.
 ```php
