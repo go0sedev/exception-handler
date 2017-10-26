@@ -3,7 +3,7 @@
 namespace GustavTrenwith\ExceptionHandler;
 
 use Exception;
-use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class ExceptionHandler
@@ -41,8 +41,6 @@ class ExceptionHandler
         $exceptionMessage .= "Trace: ".$exception->getTraceAsString()."\r\n";
 
         Mail::to($email)
-            ->from('exceptions@' . env('APP_URL'))
-            ->subject('Exception Caught on ' . env('APP_URL'))
             ->send(new ExceptionEmail('The following exception was caught on ' . env('APP_URL') . ':<br/>' . nl2br($exceptionMessage)));
 
         return true;

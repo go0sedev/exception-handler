@@ -7,20 +7,27 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Class ExceptionEmail
+ * @package GustavTrenwith\ExceptionHandler
+ * @author Gustav Trenwith <gtrenwith@gmail.com>
+ */
 class ExceptionEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $message;
+    protected $site;
+    protected $message;
 
     /**
      * Create a new message instance.
-     *
-     * @return void
+     * @param string $message
      */
-    public function __construct($message)
+    public function __construct($message = '')
     {
-        $this->message = $message;
+        $this->site = (string) str_replace("http://", "", env('APP_URL'));
+        $this->site = (string) str_replace("https://", "", $this->site);
+        $this->message = (string) $message;
     }
 
     /**
@@ -30,7 +37,9 @@ class ExceptionEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.exception-handler.email')
+        return $this->markdown('emails.exception-handler.email')
+            ->from('exceptions@' . $this->site)
+            ->subject('Exception caught on ' . $this->site)
             ->with('message', $this->message);
     }
 }
